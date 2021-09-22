@@ -86,6 +86,7 @@ namespace TownOfUs
         public static int GlitchHackDistance => Generate.GlitchHackDistanceOption.Get();
         public static float MorphlingCd => Generate.MorphlingCooldown.Get();
         public static float MorphlingDuration => Generate.MorphlingDuration.Get();
+        public static bool MorphlingCanVent => Generate.MorphlingCanVent.Get();
         public static float CamouflagerCd => Generate.CamouflagerCooldown.Get();
         public static float CamouflagerDuration => Generate.CamouflagerDuration.Get();
         public static bool ColourblindComms => Generate.ColourblindComms.Get();

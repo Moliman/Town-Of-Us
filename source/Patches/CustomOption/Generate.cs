@@ -129,6 +129,7 @@ namespace TownOfUs.CustomOption
         public static CustomHeaderOption Morphling;
         public static CustomNumberOption MorphlingCooldown;
         public static CustomNumberOption MorphlingDuration;
+        public static CustomToggleOption MorphlingCanVent;
 
         public static CustomHeaderOption Camouflager;
         public static CustomNumberOption CamouflagerCooldown;
@@ -419,6 +420,8 @@ namespace TownOfUs.CustomOption
                 new CustomNumberOption(num++, "Morphling Cooldown", 25, 10, 40, 2.5f, CooldownFormat);
             MorphlingDuration =
                 new CustomNumberOption(num++, "Morphling Duration", 10, 5, 15, 1f, CooldownFormat);
+            MorphlingCanVent =
+                new CustomToggleOption(num++, "Morphling Can Vent", false);
 
             Camouflager =
                 new CustomHeaderOption(num++, "<color=#FF0000FF>Camouflager</color>");
