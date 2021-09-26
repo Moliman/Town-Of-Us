@@ -1,5 +1,4 @@
 using HarmonyLib;
-using System.Threading;
 
 namespace TownOfUs
 {
@@ -23,26 +22,6 @@ namespace TownOfUs
             //var totalVotingTime = 15 + 15*totalPlayer
 
             __instance.discussionTimer = totalElaspedTime;
-        }
-    }
-    [HarmonyPatch(typeof(MeetingHud), nameof(MeetingHud.Update))]
-    public class MeetingHud_Update
-    {
-        public static void Postfix(MeetingHud __instance)
-        {
-            if (__instance.state == MeetingHud.VoteStates.NotVoted)
-            {
-                //temp = __instance;
-                //var ooo = new Thread(oooMethod);
-                //ooo.Start();
-            }
-
-        }
-        public static MeetingHud temp;
-        public static void oooMethod()
-        {
-            Thread.Sleep(10);
-            temp.discussionTimer = 30;
         }
     }
 }
