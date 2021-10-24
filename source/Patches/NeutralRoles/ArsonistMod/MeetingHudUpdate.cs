@@ -10,10 +10,38 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
     {
         public static void Postfix(MeetingHud __instance)
         {
-            var localPlayer = PlayerControl.LocalPlayer;
-            var _role = Role.GetRole(localPlayer);
-            if (_role?.RoleType != RoleEnum.Arsonist) return;
-            var role = (Arsonist)_role;
+            var playerNotDousedYet = 0;
+            Arsonist role = null;
+            bool arsonistAlive = false;
+            foreach (var player in PlayerControl.AllPlayerControls)
+            {
+                var __role = Role.GetRole(player);
+                if (!(__role?.RoleType != RoleEnum.Arsonist)) continue;
+                role = (Arsonist)__role;
+                break;
+            }
+            if (role == null) return;
+
+            if (true)
+            {
+                foreach (var player in PlayerControl.AllPlayerControls)
+                {
+                    if (!player.Data.IsDead && !player.Data.Disconnected && !role.DousedPlayers.Contains(player.PlayerId))
+                    {
+                        if (player.Data.PlayerId == role.Player.PlayerId)
+                            arsonistAlive = true;
+                        else
+                            playerNotDousedYet++;
+                    }
+                }
+                if (arsonistAlive && !__instance.TimerText.text.Contains("Arsonist has "))
+                    __instance.TimerText.text = "Arsonist has " + playerNotDousedYet + " member to douse  |  " + __instance.TimerText.text;
+            }
+
+
+            if (role.Player.PlayerId != PlayerControl.LocalPlayer.PlayerId)
+                return;
+
             foreach (var state in __instance.playerStates)
             {
                 var targetId = state.TargetPlayerId;
