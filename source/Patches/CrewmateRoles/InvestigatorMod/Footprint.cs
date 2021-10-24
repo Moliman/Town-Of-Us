@@ -12,6 +12,7 @@ namespace TownOfUs.CrewmateRoles.InvestigatorMod
         private SpriteRenderer _spriteRenderer;
         private readonly float _time;
         private readonly Vector2 _velocity;
+        private readonly Color _grayColor;
 
         public Color Color;
         public Vector3 Position;
@@ -26,6 +27,7 @@ namespace TownOfUs.CrewmateRoles.InvestigatorMod
             Player = player;
             _time = (int) Time.time;
             Color = Color.black;
+            _grayColor = new Color(0.2f, 0.2f, 0.2f, 1f);
 
             Start();
             role.AllPrints.Add(this);
@@ -75,7 +77,7 @@ namespace TownOfUs.CrewmateRoles.InvestigatorMod
             if (RainbowUtils.IsRainbow(Player.Data.ColorId) & !Grey)
                 Color = RainbowUtils.Rainbow;
             else if (Grey)
-                Color = new Color(0.2f, 0.2f, 0.2f, 1f);
+                Color = _grayColor;
             else
                 Color = Palette.PlayerColors[Player.Data.ColorId];
 
